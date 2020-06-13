@@ -18,7 +18,7 @@ module.exports = {
         http
           .createServer(function (req, res) {
             req.on('data', function (chunk) {
-              const sig = `'sha1=${crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex')}'`
+              const sig = `sha1=${crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex')}`
 
               if (req.headers['x-hub-signature'] === sig) {
                 const hookRef = JSON.parse(chunk).ref
