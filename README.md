@@ -4,6 +4,8 @@
 
 This bundle comes with a webhook that handles GitHub events. Using the options below, you can trigger an automatic rebuild and relaunch of your Ranvier instance when committing to your public repository. More webhooks can be easily added to this bundle, and those webhooks can use both command line arguments and the game state.
 
+To use this bundle, you will need a checkout of Ranvier. You can use my experimental fork ([azigler/zigmud](https://github.com/azigler/zigmud)) alongside a checkout of my experimental core:develop branch ([azigler/core:develop](https://github.com/azigler/core/tree/develop)), but this bundle also works with a [regular Ranvier checkout](https://github.com/RanvierMUD/ranviermud).
+
 ##### Instructions
 
 To use the included GitHub webhook, you first need to set up your webhook directly on GitHub. You can do this in the settings menu for your repository on the GitHub website. The payload URL is your server address, and don't forget to add the websocket port to the end (e.g., `mymudserver.com:85856`). The webhook's content type needs to be `application/json`. You also need to define a secret key to decrypt your webhook, for added security.
@@ -23,6 +25,8 @@ Then, in your `ranvier.json` config file, add the following:
     }
   }
 ```
+
+The `branch` value corresponds to the branch of your repository that you wish to trigger the rebuild upon commit. For most uses, this should be `master`. The `command` is what rebuilds your server from the command line, and the `path` is the root path of your Ranvier repository.
 
 Example config:
 
