@@ -6,7 +6,7 @@ This bundle comes with a webhook that handles GitHub events. Using the options b
 
 To use this bundle, you will need a checkout of Ranvier. You can use my experimental fork ([azigler/zigmud](https://github.com/azigler/zigmud)) alongside a checkout of my experimental core:develop branch ([azigler/core:develop](https://github.com/azigler/core/tree/develop)), but this bundle also works with a [regular Ranvier checkout](https://github.com/RanvierMUD/ranviermud).
 
-##### Instructions
+### Instructions
 
 To use the included GitHub webhook, you first need to set up your webhook directly on GitHub. You can do this in the settings menu for your repository on the GitHub website. The payload URL is your server address, and don't forget to add the websocket port to the end (e.g., `mymudserver.com:85856`). The webhook's content type needs to be `application/json`. You also need to define a secret key to decrypt your webhook, for added security.
 
@@ -42,6 +42,6 @@ Example config:
   }
 ```
 
-##### Extending
+### Extending
 
 To create more webhooks, add more keys to the `webhooks` object to apply new configs. Then add initialization instructions to the `startup` listener in `server-events/webhooks.js`.
