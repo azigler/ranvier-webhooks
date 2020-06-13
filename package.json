@@ -4,7 +4,7 @@
   "description": "Handle webhooks with Ranvier state",
   "repository": {
     "type": "git",
-    "url": "git://github.com/azigler/zigmud.git"
+    "url": "git://github.com/azigler/ranvier-webhooks.git"
   },
   "author": "Andrew Zigler <andrewzigler@gmail.com> (https://www.andrewzigler.com)",
   "license": "MIT"
