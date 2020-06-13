@@ -6,7 +6,11 @@ This bundle comes with a webhook that handles GitHub events. Using the options b
 
 ##### Instructions
 
-In your `ranvier.json` config file, add the following:
+To use the included GitHub webhook, you first need to set up your webhook directly on GitHub. You can do this in the settings menu for your repository on the GitHub website. The payload URL is your server address, and don't forget to add the websocket port to the end (e.g., `mymudserver.com:85856`). The webhook's content type needs to be `application/json`. You also need to define a secret key to decrypt your webhook, for added security.
+
+Once you set this key on your repository, create a `.env` file in the root of your Ranvier repository and add `GITHUB_WEBHOOK_SECRET='mysecret'` where `mysecret` is your webhook's secret key. You will also need to install [dotenv](https://www.npmjs.com/package/dotenv) in the root of your Ranvier repository with `npm install --save dotenv`.
+
+Then, in your `ranvier.json` config file, add the following:
 
 ```
 "webhooks": {
@@ -29,7 +33,7 @@ Example config:
       "url": "https://www.github.com/azigler/zigmud",
       "branch": "master",
       "command": "pm2 restart zigmud",
-      "path": "../../"
+      "path": "~/zigmud"
     }
   }
 ```
