@@ -21,12 +21,13 @@ Then, in your `ranvier.json` config file, add the following:
       "url": <URL TO YOUR GITHUB REPOSITORY>,
       "branch": <BRANCH NAME>,
       "command": <COMMAND TO RELAUNCH RANVIER>,
-      "path": <PATH TO PROJECT ROOT>
+      "path": <PATH TO PROJECT ROOT>,
+      "link": <BOOLEAN>
     }
   }
 ```
 
-The `branch` value corresponds to the branch of your repository that you wish to trigger the rebuild upon commit. For most uses, this should be `master`. The `command` is what rebuilds your server from the command line, and the `path` is the root path of your Ranvier repository.
+The `branch` value corresponds to the branch of your repository that you wish to trigger the rebuild upon commit. For most uses, this should be `master`. The `command` is what rebuilds your server from the command line, and the `path` is the root path of your Ranvier repository. If you are using a local version of `ranvier`, make sure `link` is set to `true` in order to re-establish your link after the rebuild.
 
 Example config:
 
@@ -37,7 +38,8 @@ Example config:
       "url": "https://www.github.com/azigler/zigmud",
       "branch": "master",
       "command": "pm2 restart zigmud",
-      "path": "~/zigmud"
+      "path": "~/zigmud",
+      "link": true
     }
   }
 ```
