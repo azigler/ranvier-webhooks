@@ -11,13 +11,14 @@ module.exports = {
         const { port, url, branch, command, path, link } = webhooks.github
         const secret = process.env.GITHUB_WEBHOOK_SECRET
 
+        Logger.log(`Listening for GitHub webhooks on port: ${port}...`)
+
         const http = require('http')
         const crypto = require('crypto')
         const exec = require('child_process').exec
 
         http
           .createServer(function (req, res) {
-            Logger.log(`Listening for GitHub webhooks on port: ${port}...`)
 
             req.on('data', function (chunk) {
               const sig = `sha1=${crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex')}`
