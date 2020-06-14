@@ -25,7 +25,7 @@ module.exports = {
 
                 if (hookRef === `refs/heads/${branch}`) {
                   const proc = exec(
-                    `cd ${path} && touch sanity-check.xml && git pull ${url} && npm install --unsafe-perm && ${command} ${link ? '&& npm link ranvier' : ''}`
+                    `cd ${path} && touch sanity-check.xml && git pull ${url} && npm install --unsafe-perm ${link ? '&& npm link ranvier' : ''} && ${command}`
                   )
 
                   proc.stdout.on('data', function (data) {
