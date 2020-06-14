@@ -8,7 +8,7 @@ module.exports = {
       const webhooks = Config.get('webhooks')
 
       if (webhooks.github) {
-        const { port, url, branch, command, path } = webhooks.github
+        const { port, url, branch, command, path, link } = webhooks.github
         const secret = process.env.GITHUB_WEBHOOK_SECRET
 
         const http = require('http')
@@ -25,7 +25,7 @@ module.exports = {
 
                 if (hookRef === `refs/heads/${branch}`) {
                   const proc = exec(
-                    `cd ${path} && touch sanity-check.xml && git pull ${url} && npm install --unsafe-perm && ${command}`
+                    `cd ${path} && touch sanity-check.xml && git pull ${url} && npm install --unsafe-perm && ${command} ${link ? '&& npm link ranvier' : ''}`
                   )
 
                   proc.stdout.on('data', function (data) {
