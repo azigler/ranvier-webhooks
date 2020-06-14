@@ -1,5 +1,5 @@
 
-const { Config } = require('ranvier')
+const { Config, Logger } = require('ranvier')
 require('dotenv').config()
 
 module.exports = {
@@ -17,6 +17,8 @@ module.exports = {
 
         http
           .createServer(function (req, res) {
+            Logger.log(`Listening for GitHub webhooks on port: ${port}...`)
+
             req.on('data', function (chunk) {
               const sig = `sha1=${crypto.createHmac('sha1', secret).update(chunk.toString()).digest('hex')}`
 
@@ -29,7 +31,7 @@ module.exports = {
                   )
 
                   proc.stdout.on('data', function (data) {
-                    console.log(data)
+                    Logger.log(data)
                   })
                 }
               }
